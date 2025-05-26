@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
-// CRITICAL: Ensure VT323 font is loaded and applied throughout the application
-// We're using both local font files and Google Fonts as fallback
 
 export const metadata: Metadata = {
   title: "C:\MAISYVERSE\V3",
@@ -79,6 +78,7 @@ export default function RootLayout({
       <body className="antialiased">
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
