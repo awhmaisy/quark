@@ -1,3 +1,6 @@
+/* Google Fonts backup */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 /* Tailwind directives */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
@@ -32,8 +35,6 @@
   font-display: block; /* Changed from swap to block for immediate rendering */
 }
 
-/* Google Fonts backup */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 /* FT Speaker Font - Fallback to system fonts if not available */
 @font-face {

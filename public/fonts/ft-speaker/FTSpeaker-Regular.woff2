@@ -1,1 +1,2 @@
-404: Not Found
+<?xml version="1.0" encoding="UTF-8"?>
+<Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><BucketName>ft-static-fonts</BucketName><RequestId>8HNNXMKC8N1P65ZM</RequestId><HostId>vvf1l76f97qjxeFhjkOggd7dWFSw1rdV52vieeZ/3muB+0Oh4yBtSwk1pNmKNPKyieOtUBW41nM=</HostId></Error>

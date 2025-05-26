@@ -693,7 +693,7 @@ the quantum foam, creating ripples in reality."
                 {/* Projects section */}
                 <div className="terminal-section">
                   <div className="terminal-section-title">projects</div>
-                  <div className="grid grid-cols-4 md:grid-cols-2 gap-12" style={{ fontSize: '16px' }}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12" style={{ fontSize: '16px' }}>
                     <div>
                       <div className="font-bold">mAIsy  <span className="text-xs ml-2 badge-online px-1">ONLINE, IN DEV</span></div>
                       <div className="opacity-80 mb-1">https://npmangel.com</div>
