@@ -26,6 +26,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
         {/* Font preloading for optimal performance */}
         <link rel="preload" href="/fonts/VT323-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/ft-speaker/FTSpeaker-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
@@ -54,28 +55,29 @@ export default function RootLayout({
         `}} />
         {/* Font loading script - client-side only, runs after hydration */}
         <script dangerouslySetInnerHTML={{ __html: `
-          // Wait for hydration to complete before manipulating classes
-          document.addEventListener('DOMContentLoaded', function() {
-            // Add loading class after DOM is ready (post-hydration)
-            document.body.classList.add('fonts-loading');
-            
-            // Font loading detection
-            if (document.fonts && document.fonts.ready) {
-              document.fonts.ready.then(() => {
-                document.body.classList.remove('fonts-loading');
-                document.body.classList.add('fonts-loaded');
-              });
+          // Use requestAnimationFrame to ensure this runs after hydration
+          requestAnimationFrame(() => {
+            // Ensure consistent class names between server and client
+            if (!document.body.classList.contains('fonts-loaded')) {
+              document.body.classList.add('fonts-loaded');
             }
             
-            // Fallback in case fonts take too long
-            setTimeout(() => {
-              document.body.classList.remove('fonts-loading');
-              document.body.classList.add('fonts-loaded');
-            }, 1000);
+            // Font loading detection for FT Speaker font
+            const ftSpeakerFont = new FontFace('FT Speaker', 'url(/fonts/ft-speaker/FTSpeaker-Regular.woff2)');
+            ftSpeakerFont.load().then(() => {
+              document.fonts.add(ftSpeakerFont);
+              // Apply the font to maisy-typewriter element
+              const maisyElement = document.getElementById('maisy-typewriter');
+              if (maisyElement) {
+                maisyElement.style.fontFamily = "'FT Speaker', sans-serif";
+              }
+            }).catch(err => {
+              console.error('Failed to load FT Speaker font:', err);
+            });
           });
         `}} />
       </head>
-      <body className="antialiased">
+      <body className="antialiased fonts-loaded">
         {children}
         <Analytics />
         <SpeedInsights />

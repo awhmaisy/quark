@@ -367,8 +367,17 @@ export default function Home() {
     };
   }, [accessGranted]);
 
-  // Current date in terminal format
-  const currentDate = new Date().toISOString().split('T')[0];
+  // State for the current date - using client-side only to prevent hydration mismatch
+  const [currentDate, setCurrentDate] = useState("");
+
+  // Set the date on the client side only
+  useEffect(() => {
+    setCurrentDate(new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    }));
+  }, []);
 
   return (
     <div className="flex min-h-screen items-center justify-center p-4 bg-black crt-effect">
@@ -501,7 +510,7 @@ export default function Home() {
                   <div className="retro-profile" id="retro-profile">
                     {/* Path header like in the first image */}
                     <div className="retro-header">
-                      Path: C:\MAISYVERSE\QUANTUM\SIGNATURE {new Date().toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false })}
+                      Path: C:\MAISYVERSE\QUANTUM\SIGNATURE {currentDate}
                     </div>
                     {/* Left menu and right content layout */}
                     <div className="retro-profile-container">

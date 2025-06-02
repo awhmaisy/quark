@@ -7,11 +7,27 @@
   font-display: swap;
 }
 
+/* FT Speaker font for MAISY text */
+@font-face {
+  font-family: 'FT Speaker';
+  src: url('/fonts/ft-speaker/FTSpeaker-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Apply VT323 font to all elements */
 body, html, pre, code, .terminal-section, .retro-profile,
 .terminal-title-container, .terminal-title-container-mobile,
-.maisy-title-container, .terminal-title-text, #maisy-typewriter,
+.maisy-title-container, .terminal-title-text,
 #typewriter-text, #system-part-mobile, #init-part-mobile,
 .system-part, .init-part, .system-line, .init-line {
   font-family: 'VT323', monospace !important;
+}
+
+/* Apply FT Speaker font specifically to MAISY text */
+#maisy-typewriter {
+  font-family: 'FT Speaker', sans-serif !important;
+  font-weight: normal;
+  letter-spacing: 0.05em;
 }
