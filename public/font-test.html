@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Font Test</title>
+  <style>
+    @font-face {
+      font-family: 'FT Speaker';
+      src: url('/fonts/ft-speaker-regular.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    }
+    
+    @font-face {
+      font-family: 'VT323';
+      src: url('/fonts/VT323-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    }
+    
+    .ft-speaker {
+      font-family: 'FT Speaker', Arial, sans-serif;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    
+    .vt323 {
+      font-family: 'VT323', monospace;
+      font-size: 36px;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="ft-speaker">This is FT Speaker Font</h1>
+  <h1 class="vt323">This is VT323 Font</h1>
+</body>
+</html>

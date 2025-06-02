@@ -1,0 +1,17 @@
+/* Ensure VT323 is loaded */
+@font-face {
+  font-family: 'VT323';
+  src: url('/fonts/VT323-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply VT323 font to all elements */
+body, html, pre, code, .terminal-section, .retro-profile,
+.terminal-title-container, .terminal-title-container-mobile,
+.maisy-title-container, .terminal-title-text, #maisy-typewriter,
+#typewriter-text, #system-part-mobile, #init-part-mobile,
+.system-part, .init-part, .system-line, .init-line {
+  font-family: 'VT323', monospace !important;
+}

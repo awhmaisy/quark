@@ -36,13 +36,13 @@
 }
 
 
-/* FT Speaker Font - Fallback to system fonts if not available */
+/* FT Speaker Font */
 @font-face {
   font-family: 'FT Speaker';
-  src: local('Arial'), local('Helvetica'), local('sans-serif');
+  src: url('/fonts/ft-speaker/FTSpeaker-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block; /* Changed from swap to block for immediate rendering */
 }
 
 body {
@@ -796,8 +796,23 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* CRITICAL: Force VT323 font on everything */
-* {
+/* Remove the global font override and use more targeted approach */
+
+/* Elements that should use FT Speaker font */
+.terminal-title-container, .terminal-title-container-mobile,
+.maisy-title-container, .terminal-title-text, #maisy-typewriter,
+#typewriter-text, #system-part-mobile, #init-part-mobile,
+.system-part, .init-part, .system-line, .init-line,
+h1.terminal-title-text {
+  font-family: 'FT Speaker', Arial, sans-serif !important;
+  font-weight: normal;
+}
+
+/* Elements that should use VT323 font */
+body, html, pre, code, .terminal-section, .retro-profile,
+.terminal-content, .binary-line, .command, .response, .info,
+.warning, .error, .file-tree, .menu-item, .content-body,
+.retro-footer, p, div:not(.terminal-title-container):not(.maisy-title-container):not(.terminal-title-text):not(#maisy-typewriter):not(#typewriter-text):not(#system-part-mobile):not(#init-part-mobile):not(.system-part):not(.init-part):not(.system-line):not(.init-line) {
   font-family: 'VT323', monospace !important;
 }
 

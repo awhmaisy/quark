@@ -88,6 +88,35 @@ const secretMessage = "as above so below";
 const binaryMessage = textToBinary(secretMessage);
 
 export default function Home() {
+  // Add direct style tag to use VT323 font which is already working in the project
+  const fontStyle = `
+    /* Style for the typewriter text elements */
+    #typewriter-text, #system-part-mobile, #init-part-mobile {
+      font-family: 'VT323', monospace !important;
+      letter-spacing: 0.05em !important;
+      font-weight: normal !important;
+      text-transform: uppercase !important;
+      color: #ea9ae5 !important;
+    }
+    
+    /* Specific style for MAISY text with highest specificity */
+    html body #maisy-typewriter {
+      font-family: 'VT323', monospace !important;
+      letter-spacing: 0.05em !important;
+      font-size: 48px !important;
+      font-weight: normal !important;
+      text-transform: uppercase !important;
+      color: #ea9ae5 !important;
+    }
+    
+    /* Make MAISY text smaller on mobile */
+    @media (max-width: 768px) {
+      html body #maisy-typewriter {
+        font-size: 36px !important;
+      }
+    }
+  `;
+  
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [currentCommands, setCurrentCommands] = useState<TerminalCommand[]>([]);
@@ -343,6 +372,8 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen items-center justify-center p-4 bg-black crt-effect">
+      {/* Direct style tag to ensure proper font styling */}
+      <style dangerouslySetInnerHTML={{ __html: fontStyle }} />
       <div className="scanline"></div>
 
       {isLoading ? (
@@ -350,16 +381,34 @@ export default function Home() {
         <div className="w-full max-w-lg p-6 text-center crt-container">
           <div className="mb-6">
             <h1 className="terminal-title-container">
-              <span id="typewriter-text" className="terminal-title-text"></span>
+              <span id="typewriter-text" className="terminal-title-text" style={{ 
+                fontFamily: "'VT323', monospace",
+                letterSpacing: "0.1em", 
+                fontSize: "36px",
+                fontWeight: "normal",
+                textTransform: "uppercase"
+              }}></span>
               <span id="desktop-cursor" className="terminal-cursor">|</span>
             </h1>
             <h1 className="terminal-title-container-mobile">
               <div className="system-line">
-                <span id="system-part-mobile" className="system-part"></span>
+                <span id="system-part-mobile" className="system-part" style={{ 
+                  fontFamily: "'VT323', monospace",
+                  letterSpacing: "0.1em",
+                  fontSize: "32px",
+                  fontWeight: "normal",
+                  textTransform: "uppercase"
+                }}></span>
                 <span id="system-cursor" className="terminal-cursor">|</span>
               </div>
               <div className="init-line">
-                <span id="init-part-mobile" className="init-part"></span>
+                <span id="init-part-mobile" className="init-part" style={{ 
+                  fontFamily: "'VT323', monospace",
+                  letterSpacing: "0.1em",
+                  fontSize: "32px",
+                  fontWeight: "normal",
+                  textTransform: "uppercase"
+                }}></span>
                 <span id="init-cursor" className="terminal-cursor hidden">|</span>
               </div>
             </h1>
